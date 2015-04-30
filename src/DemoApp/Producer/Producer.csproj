@@ -71,10 +71,6 @@
       <Project>{539812e2-0f65-49ed-8f26-1736cf6cbfda}</Project>
       <Name>Rebus.Autofac</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Rebus.DataBus.Autofac\Rebus.DataBus.Autofac.csproj">
-      <Project>{af640f2f-2571-4c72-b638-b7a707dbcf8a}</Project>
-      <Name>Rebus.DataBus.Autofac</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Rebus.DataBus.Messaging\Rebus.DataBus.Messaging.csproj">
       <Project>{2452385a-54e9-463c-b0ec-7a937c9c06e1}</Project>
       <Name>Rebus.DataBus.Messaging</Name>
@@ -83,9 +79,17 @@
       <Project>{12ebf0de-0bef-45d4-be81-d7d952847656}</Project>
       <Name>Rebus.DataBus</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Rebus.KOOP.Autofac\Rebus.KOOP.Autofac.csproj">
+      <Project>{4cafb93a-a417-474f-a1a0-4331fa65aca5}</Project>
+      <Name>Rebus.KOOP.Autofac</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Rebus.Log4net\Rebus.Log4Net.csproj">
       <Project>{2afae434-5cd2-494e-8341-005cd637fe2d}</Project>
       <Name>Rebus.Log4Net</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Rebus.ServiceLocator.Autofac\Rebus.ServiceLocator.Autofac.csproj">
+      <Project>{af640f2f-2571-4c72-b638-b7a707dbcf8a}</Project>
+      <Name>Rebus.ServiceLocator.Autofac</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Rebus\Rebus.csproj">
       <Project>{f57a06fa-f471-49c8-a92d-85d5a27055c4}</Project>

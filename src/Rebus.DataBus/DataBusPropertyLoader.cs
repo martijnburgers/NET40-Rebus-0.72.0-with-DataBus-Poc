@@ -45,7 +45,7 @@ namespace Rebus.DataBus
         {
             _log.Info("Loading databus properties on message of type '{0}'.", message.GetType().FullName);
 
-            IEnumerable<DataBusPropertyInfo> dataBusProperties = DataBusPropertiesExtractor.GetDataBusProperties(
+            IEnumerable<DataBusPropertyInfo> dataBusProperties = DataBusPropertiesExtractor.GetNonNullDataBusProperties(
                 message);
 
             foreach (DataBusPropertyInfo dataBusPropertyInfo in dataBusProperties)
@@ -65,7 +65,7 @@ namespace Rebus.DataBus
                 propertyInfo.Name,
                 message.GetType().FullName);
 
-            IDataBusProperty propertyInstance = propertyInfo.GetPropertyInstance(message) as IDataBusProperty;
+            IDataBusProperty propertyInstance = propertyInfo.GetPropertyInstance() as IDataBusProperty;
 
             if (propertyInstance == null || !propertyInstance.HasValue)
             {

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using Autofac;
 using Autofac.Extras.CommonServiceLocator;
 using Microsoft.Practices.ServiceLocation;
-using Rebus.Autofac;
+using Rebus.KOOP.Autofac;
 
-namespace Rebus.DataBus.Autofac
+namespace Rebus.ServiceLocator.Autofac
 {
     public class AutofacServiceLocatorContainerAdapter : AutofacContainerAdapter, IServiceLocator
     {
@@ -13,7 +13,7 @@ namespace Rebus.DataBus.Autofac
 
         public AutofacServiceLocatorContainerAdapter(IContainer container)
             : base(container)
-        {            
+        {
             if (container == null) throw new ArgumentNullException("container");
 
             _csl = new AutofacServiceLocator(container);

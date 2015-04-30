@@ -23,9 +23,15 @@
 		<RebusProjects Include="..\src\Rebus.Unity\*.csproj"/>
 
 		<RebusProjects Include="..\src\Rebus.DataBus\*.csproj"/>
-		<RebusProjects Include="..\src\Rebus.DataBus.Autofac\*.csproj"/>
+		<RebusProjects Include="..\src\Rebus.DataBus.Messaging\*.csproj"/>
+    <RebusProjects Include="..\src\Rebus.ServiceLocator.Autofac\*.csproj"/>
 
-		<Docs Include="..\src\Rebus\bin\Release\Rebus.xml" />
+    <RebusProjects Include="..\src\KOOP.Rebus.ApplicationContext\*.csproj"/>
+    <RebusProjects Include="..\src\Rebus.KOOP.Autofac\*.csproj"/>
+
+    <RebusProjects Include="..\src\Rebus.Identities\*.csproj"/>    
+
+    <Docs Include="..\src\Rebus\bin\Release\Rebus.xml" />
 		<Docs Include="..\src\Rebus.*\bin\Release\Rebus.*.xml" />
 
 		<NuSpecFiles Include="$(ScriptsFolder)\*.nuspec" />

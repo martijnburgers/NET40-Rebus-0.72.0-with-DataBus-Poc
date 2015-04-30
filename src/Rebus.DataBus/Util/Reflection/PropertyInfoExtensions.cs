@@ -23,6 +23,13 @@ namespace Rebus.DataBus.Util.Reflection
 
             return exp.Compile();
         }
+        
+        public static Func<object> GenerateGetterFunc(this PropertyInfo pi, object instance)
+        {
+            var getter = pi.GenerateGetterFunc();
+
+            return () => getter(instance);
+        }
 
         /// <summary>
         /// Taken from SO: http://stackoverflow.com/a/28869743/234417
@@ -58,7 +65,41 @@ namespace Rebus.DataBus.Util.Reflection
             return false;
         }
 
-        public static DataBusPropertyInfo PromoteToDataBusPropertyInfo(this PropertyInfo propertyInfo)
+        //public static DataBusPropertyInfo PromoteToDataBusPropertyInfo(this PropertyInfo propertyInfo)
+        //{
+        //    if (!propertyInfo.IsDataBusProperty())
+        //        throw new ArgumentException("Can't promote this property to a DataBusPropertyInfo object.");
+
+        //    return new DataBusPropertyInfo(
+        //        propertyInfo.Name,
+        //        propertyInfo.IsDataBusCompressedProperty(),
+        //        propertyInfo.GenerateGetterFunc(), null);
+        //}
+
+        //public static DataBusPropertyInfo PromoteToDataBusPropertyInfo(this PropertyInfo propertyInfo, string propertyPath)
+        //{
+        //    if (!propertyInfo.IsDataBusProperty())
+        //        throw new ArgumentException("Can't promote this property to a DataBusPropertyInfo object.");
+
+        //    return new DataBusPropertyInfo(
+        //        propertyInfo.Name,
+        //        propertyInfo.IsDataBusCompressedProperty(),
+        //        propertyInfo.GenerateGetterFunc(), 
+        //        propertyPath == null ? propertyInfo.Name : propertyPath + "." + propertyInfo.Name);
+        //}
+
+        //public static DataBusPropertyInfo PromoteToDataBusPropertyInfo(this PropertyInfo propertyInfo, object instance)
+        //{
+        //    if (!propertyInfo.IsDataBusProperty())
+        //        throw new ArgumentException("Can't promote this property to a DataBusPropertyInfo object.");
+
+        //    return new DataBusPropertyInfo(
+        //        propertyInfo.Name,
+        //        propertyInfo.IsDataBusCompressedProperty(),
+        //        propertyInfo.GenerateGetterFunc(instance));
+        //}
+
+        public static DataBusPropertyInfo PromoteToDataBusPropertyInfo(this PropertyInfo propertyInfo, Func<object> getterFunc)
         {
             if (!propertyInfo.IsDataBusProperty())
                 throw new ArgumentException("Can't promote this property to a DataBusPropertyInfo object.");
@@ -66,7 +107,7 @@ namespace Rebus.DataBus.Util.Reflection
             return new DataBusPropertyInfo(
                 propertyInfo.Name,
                 propertyInfo.IsDataBusCompressedProperty(),
-                propertyInfo.GenerateGetterFunc());
+                getterFunc);
         }
     }
 }

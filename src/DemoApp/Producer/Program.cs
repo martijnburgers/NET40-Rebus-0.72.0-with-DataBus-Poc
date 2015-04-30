@@ -8,11 +8,12 @@ using Messages;
 using Rebus;
 using Rebus.Configuration;
 using Rebus.DataBus;
-using Rebus.DataBus.Autofac;
 using Rebus.DataBus.Configuration;
 using Rebus.DataBus.Messaging;
 using Rebus.Log4Net;
+using Rebus.ServiceLocator.Autofac;
 using Rebus.Transports.Sql;
+
 
 namespace Producer
 {

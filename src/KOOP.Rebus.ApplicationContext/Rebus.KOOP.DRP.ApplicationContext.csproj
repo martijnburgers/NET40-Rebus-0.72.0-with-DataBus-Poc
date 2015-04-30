@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AF640F2F-2571-4C72-B638-B7A707DBCF8A}</ProjectGuid>
+    <ProjectGuid>{174A0533-6307-45BE-B017-5323F851AF12}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Rebus.DataBus.Autofac</RootNamespace>
-    <AssemblyName>Rebus.DataBus.Autofac</AssemblyName>
+    <RootNamespace>Rebus.KOOP.DRP.ApplicationContext</RootNamespace>
+    <AssemblyName>Rebus.KOOP.DRP.ApplicationContext</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <TargetFrameworkProfile />
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
@@ -26,6 +25,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -34,19 +34,19 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Autofac.3.5.0\lib\net40\Autofac.dll</HintPath>
-    </Reference>
-    <Reference Include="Autofac.Extras.CommonServiceLocator, Version=3.2.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Autofac.Extras.CommonServiceLocator.3.2.0\lib\net40\Autofac.Extras.CommonServiceLocator.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -57,18 +57,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AutofacServiceLocatorContainerAdapter.cs" />
+    <Compile Include="Configuration\ApplicationContextConfigurer.cs" />
+    <Compile Include="Configuration\ApplicationContextOptions.cs" />
+    <Compile Include="Configuration\RebusApplicationContextConfigurationException.cs" />
+    <Compile Include="Configuration\ApplicationContextResolverContext.cs" />
+    <Compile Include="IApplicationContextResolver.cs" />
+    <Compile Include="MessageContextClaimsResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RebusApplicationContextException.cs" />
+    <Compile Include="RebusDrpApplicationContextExtensions.cs" />
+    <Compile Include="Util\BusExtensions.cs" />
+    <Compile Include="Util\MessageContextExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Rebus.Autofac\Rebus.Autofac.csproj">
-      <Project>{539812e2-0f65-49ed-8f26-1736cf6cbfda}</Project>
-      <Name>Rebus.Autofac</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Rebus\Rebus.csproj">
       <Project>{f57a06fa-f471-49c8-a92d-85d5a27055c4}</Project>
       <Name>Rebus</Name>

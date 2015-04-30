@@ -48,14 +48,13 @@ namespace Rebus.DataBus
 
             _log.Info("Offloading databus properties on message of type {0}", message.GetType().FullName);
 
-            IEnumerable<DataBusPropertyInfo> props = DataBusPropertiesExtractor.GetDataBusProperties(message);
+            IEnumerable<DataBusPropertyInfo> props = DataBusPropertiesExtractor.GetNonNullDataBusProperties(message);
 
             foreach (DataBusPropertyInfo dataBusPropertyInfo in props)
             {
                 Offload(dataBusPropertyInfo, message); //todo parallel things?
             }
         }
-
 
         public void Offload(DataBusPropertyInfo propertyInfo, object message)
         {
@@ -67,7 +66,7 @@ namespace Rebus.DataBus
               propertyInfo.Name,
               message.GetType().FullName);
 
-            IDataBusProperty propertyInstance = propertyInfo.GetPropertyInstance(message) as IDataBusProperty;
+            IDataBusProperty propertyInstance = propertyInfo.GetPropertyInstance() as IDataBusProperty;
 
             if (propertyInstance == null)
             {
