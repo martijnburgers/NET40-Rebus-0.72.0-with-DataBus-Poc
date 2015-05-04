@@ -2,6 +2,7 @@
 using Microsoft.IdentityModel.Claims;
 using Newtonsoft.Json;
 using Rebus.IdentityClaims.Configuration;
+using Rebus.IdentityClaims.Serialization;
 
 namespace Rebus.IdentityClaims.Util
 {
@@ -13,9 +14,16 @@ namespace Rebus.IdentityClaims.Util
             IEnumerable<Claim> claims,
             string headerKey = null)
         {
+            var jsonResolver = new IgnorableSerializerContractResolver();
+            
+            // ignore single property
+            jsonResolver.Ignore(typeof(Claim), "Subject");
+            
+            var jsonSettings = new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore, ContractResolver = jsonResolver };
+
             string serializedClaims = JsonConvert.SerializeObject(
                 claims,
-                new JsonSerializerSettings {ReferenceLoopHandling = ReferenceLoopHandling.Ignore});
+                jsonSettings);
 
             bus.AttachHeader(message, headerKey ?? IdentityConfigurer.IdentityClaimsHeaderKey, serializedClaims);
         }

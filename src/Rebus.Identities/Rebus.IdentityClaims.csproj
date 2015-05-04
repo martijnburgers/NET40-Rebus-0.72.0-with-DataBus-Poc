@@ -80,6 +80,7 @@
     <Compile Include="RebusIdentityException.cs" />
     <Compile Include="RebusIdentityExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Serialization\IgnorableSerializerContractResolver.cs" />
     <Compile Include="ThreadIdentityClaimsResolver.cs" />
     <Compile Include="Util\BusExtensions.cs" />
     <Compile Include="Util\MessageContextExtensions.cs" />
